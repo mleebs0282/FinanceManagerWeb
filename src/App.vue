@@ -5,56 +5,60 @@
       dark
     >
       <div class="d-flex align-center">
+        <router-link to='/'>
         <v-img
           alt="Vuetify Logo"
-          class="shrink mr-2"
+          class="shrink mr-2 logo"
           contain
           src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
           transition="scale-transition"
           width="40"
         />
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+       <h1>Finance Manager</h1>
+        </router-link>
       </div>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <router-link to='/budget'>
+        <v-icon class="mr-2">mdi-alarm-panel-outline</v-icon>
+        <span>Budget</span>
+      </router-link>
     </v-app-bar>
 
     <v-main>
-      <Bills/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Bills from './components/Bills';
-
 export default {
   name: 'App',
 
   components: {
-    Bills,
+    
   },
 
   data: () => ({
     //
   }),
 };
-
 </script>
+
+<style>
+  .v-application header a {
+    color: #fff !important;
+    text-decoration: none;
+  }
+
+  .logo {
+    display: inline-block !important;
+    vertical-align: bottom;
+  }
+
+  .logo + h1 {
+    display: inline-block;
+  }
+</style>

@@ -1,8 +1,9 @@
 <template>
     <v-container>
+        <h2>Bill Pay</h2>
         <v-row no-gutters v-for="bill in bills.bills" :key="bill.id" style="height: 60px;">
-            <v-col lg="3">
-                {{ bill.payee }}
+            <v-col lg="2">
+                <router-link :to="{ path: '/bill', query: { id: bill.id }}">{{ bill.payee }}</router-link>
             </v-col>
             <v-col sm="1">
                 {{ bill.dayDue }}
@@ -13,19 +14,19 @@
             <v-col sm="1">
                 {{ bill.balance }}
             </v-col>
-            <v-col md="1">
+            <v-col md="2">
                 {{ bill.type }}
             </v-col>
             <v-col md="1">
                 <a :href="bill.website.location" target="_blank">Website</a>
             </v-col>
             <v-col md="2">
-                <v-btn @click="copyValue(bill.website.login.username)">
+                <v-btn @click="copyValue(bill.website.login.username)" color="accent" x-small>
                     Copy username
                 </v-btn>
             </v-col>
             <v-col md="2">
-                <v-btn @click="copyValue(bill.website.login.password)">
+                <v-btn @click="copyValue(bill.website.login.password)" color="accent" x-small>
                     Copy Password
                 </v-btn>
             </v-col>
@@ -37,7 +38,7 @@
 import BillService from "../services/bill-service";
 
 export default {
-    name: 'Bills',
+    name: 'Home',
     data() {
         return {
             bills: []
